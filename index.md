@@ -4,7 +4,7 @@ WE Infinite - "Live in the present and shape the future. - *Subramaniya Bharathi
 
 ### About Us
 
->> We **We Infinite** is a technology company to build software produts, websites, consulting, training.
+##### We **We Infinite** is a technology company to build software produts, websites, consulting, training.
 
 ### Motto
 
