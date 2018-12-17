@@ -1,37 +1,45 @@
-## Welcome to GitHub Pages
+## Welcome to We Infinite
 
-You can use the [editor on GitHub](https://github.com/weinfinite/weinfinite.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+WE Infinite - "Live in the present and shape the future. - *Subramaniya Bharathiyar*"
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### About Us
 
-### Markdown
+>> We **We Infinite** is a technology company to build software produts, websites, consulting, training.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Motto
 
-```markdown
-Syntax highlighted code block
+* Take you (or your organization) into this open World Wide Web and accessibale information from anywhere. 
+* We build products thats makes your day to day task easier
+* If you comes out from college or thirst to learn technology we will Shape you to become a better person for this Information Technology industry world.
+* We do consulting with you (or your organization) to make your _business in Online via Build Website, Social Media Campaign, and create Produts suitable for you to make your things better_
 
-# Header 1
-## Header 2
-### Header 3
+### Services Offered
 
-- Bulleted
-- List
+* Technology Consulting
+* Technology Training
+* Website Development
+* Social Media Campaign
+* Develop Products
 
-1. Numbered
-2. List
+### Specialization
 
-**Bold** and _Italic_ and `Code` text
+* Domain  - Payments, E-Commerce, Transport, Disaster Management
+* Tech Stack Java Technologies, PHP
+* Payment Gateway Integration
+* Static And Dynamic webistes
+* Web Hosting & Maintenance
 
-[Link](url) and ![Image](src)
-```
+### Approach
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+We serve or build products 
+* Understande the Problem or What need
+* Easy to use
+* Its solve customer problem
+* Availability
+* Performance
+* Scalaibality
+* Maintainability 
 
-### Jekyll Themes
+### Contact us
+Email us - weinfinite0@gmail.com
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/weinfinite/weinfinite.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
