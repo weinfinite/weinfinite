@@ -42,5 +42,5 @@ We serve or build products
 
 ### Contact us
 * Email us 📧- [weinfinitech@gmail.com](mailto:weinfinitech@gmail.com) 
-* Twitter - [weinfinitech](http://twitter.com/weinfinite0)
+* Twitter - [weinfinitech](http://twitter.com/weinfinitech)
 
