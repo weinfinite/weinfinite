@@ -41,8 +41,6 @@ We serve or build products
 * Maintainability 
 
 ### Contact us
-* Email us 📧- [weinfinite0@gmail.com](mailto:weinfinite0@gmail.com) 
-* Twitter - [weinfinite0](http://twitter.com/weinfinite0)
-
-<meta name="google-site-verification" content="P9_YOw7ogA03J12oC0o-JoTm3cyftgqpamCe9a2MG2M" />
+* Email us 📧- [weinfinitech@gmail.com](mailto:weinfinitech@gmail.com) 
+* Twitter - [weinfinitech](http://twitter.com/weinfinite0)
 
