@@ -1,0 +1,236 @@
+<html>
+	<head>
+		<meta property="og:title" content="IRCT Train Ticket Planner" />
+		<meta property="og:site_name" content="Train Ticket Booking Planner" />
+		<meta property="og:url" content="http://planmytravel.in" />
+		<meta property="og:image" content="img/cyclone.png" />
+		<meta property="og:description" content="IRCTC Train Ticket Advance Booking Calculator" />
+		<meta property="og:type" content="website" />
+		<link rel="shortcut icon" type="image/png" href="img/cyclone.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta content='IRCTC Ticket Date Calculator | 120 days advance' property='og:title'/>
+		<meta name="author" content="We Infinite Tech">
+		<meta name="keywords" content="IRCTC ticket date calculator, how to find IRCTC ticket booking date,Indian Railways,Booking Date,Tatkal,120 days,,irctc dates,indian rail,train booking,train booking dates,calculate,advance booking,train ticket,ticketdate,ticket date,reservation,train reservation,irctc reservation,rail reservation,reservation date,reservation date calculator" />
+		<meta name="robots" content="follow">
+		<meta content='Indian Railways (IRCTC) allow booking tickets 120 days advance to date of journey, this is a tool to calculate and remind you when the advance booking date.' property='og:description'/>
+		<title>IRCTC Ticket Calculator | 120 days Advance </title>
+		
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+
+		<!-- Custom styles for this template -->
+		<link href="css/4-col-portfolio.css" rel="stylesheet" />
+		
+		<style> 
+		.float-right {
+			float: right!important;
+		}
+		
+		input[type=date] {
+			width: 100%;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			font-size: 16px;
+			background-color: white;
+			//background-image: url('images/searchicon.png');
+			background-position: 10px 10px; 
+			background-repeat: no-repeat;
+			padding: 12px 20px 12px 10px;
+			-webkit-transition: width 0.4s ease-in-out;
+			transition: width 0.4s ease-in-out;
+		}
+		
+		.search{
+			padding-top: 15px;
+			padding-bottom: 25px;
+		}
+		
+		.date{
+			background-color: yellow;
+		}
+	</style>
+
+		
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+	<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			var no_of_days = 120;
+			$(document).ready(function(){
+				
+				Date.prototype.addDays = function(days) {
+							this.setDate(this.getDate() + parseInt(days));
+							return this;
+						};
+						
+				Date.prototype.minusDays = function(days) {
+							this.setDate(this.getDate() - parseInt(days));
+							return this;
+						};
+						
+				Handlebars.registerHelper('hMinusDays', function (day,month,year) {
+					var hdate = new Date(Date.parse(month+"/"+day+"/"+year));
+					return formatDate(hdate.minusDays(no_of_days));
+				});
+				
+				Handlebars.registerHelper('hRemainder', function (day,month,year,time) {
+					var hdate = new Date(Date.parse(month+"/"+day+"/"+year));
+					return formatDateCalendar(hdate.minusDays(no_of_days),time);
+				});
+				
+				var d = new Date();
+				var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+				var offset = '+5.5';
+				var today = new Date(utc + (3600000*offset));
+				var today_opened = today.addDays(no_of_days);
+				
+				$("input[name=journey_date]").val(today_opened.toISOString().substr(0, 10));
+				$(".start").html(formatDateCalendar(today_opened,"7:00 AM"));
+				$(".end").html(formatDateCalendar(today_opened,"8:00 AM"));
+				
+				
+				setInterval(function() {
+					var current = new Date();
+					var d = new Date();
+					var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+					var offset = '+5.5';
+					var nd = new Date(utc + (3600000*offset));
+					$('#today_date').html(formatDate(nd));
+					$("#opened_date").html(formatDate(nd.addDays(no_of_days)));
+				}, 1000);
+				
+				$("input[name=journey_date]").change(function(){
+					try{
+						$('#your_book_date').html();
+						var value = $("input[name=journey_date]").val();
+						var date = new Date(Date.parse(value));
+						var reduce_date = date.minusDays(no_of_days);
+						var open_date = formatDate(reduce_date);
+						console.log(formatDateCalendar(reduce_date,"7:00 am"));
+						$(".start").html(formatDateCalendar(reduce_date,"7:00 AM"));
+						$(".end").html(formatDateCalendar(reduce_date,"8:00 AM"));
+						$('#your_book_date').html("<h4> Booking Starts on -  <span class='date'>"+open_date+"</span> for Journey date "+formatDate(new Date(Date.parse(value)))+", Happy Jouney!!! </h4>");					
+					}catch(err){
+						$("#your_book_date").html(err);
+					}
+
+				});
+				
+				function formatDate(date){
+					var monthNames = [
+							"January", "February", "March",
+							"April", "May", "June", "July",
+							"August", "September", "October",
+							"November", "December"
+						  ];
+					var day = date.getDate();
+					var monthIndex = date.getMonth();
+					var year = date.getFullYear();
+					return day + ' ' + monthNames[monthIndex] + ' ' + year;
+				}
+				
+				function formatDateCalendar(date,time){
+					var day = date.getDate();
+					var monthIndex = date.getMonth();
+					var year = date.getFullYear();
+					return (monthIndex+1) +"/"+day+"/"+year+" "+time;
+				}
+				
+				$.getJSON('data/holidays.json', {}, function (data) {
+					//var data = {"holidays":[{"date":"1","month":"Jan","mon":"1","year":"2019","day":"Tue","holiday":"New Year's Day","states":"AR, ML, MN, MZ, NL, PY,RJ, SK & TN"}]};
+					var templateScript = $("#holidays_template").html();
+					var template = Handlebars.compile(templateScript);
+					var text = template(data);
+					$("#results").html(text);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">IRCTC Ticket Planner</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mailto:weinfinitech@gmail.com" target="_blank">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+	
+	<div class="container">
+		<div class="search">
+			<h2>Select Journey Date </h2> <br />
+			<input type="date" name="journey_date" id="journey_date" />
+		</div>
+		<div id="your_book_date">
+			<h5>Ticket Opened upto <span id="opened_date" class="date"></span>, Happy Journey !!!</h5>
+		</div>
+		
+		<div title="Add to Calendar" class="addeventatc">
+			Add Reminder
+			<span class="start">02/03/2019 08:00 AM</span>
+			<span class="end">02/03/2019 10:00 AM</span>
+			<span class="timezone">Asia/Calcutta</span>
+			<span class="title">IRCTC Ticket Book</span>
+			<span class="description">IRCT Ticket Booking Remainder for my Journey by weinfinitech.com</span>
+			<span class="location">Online</span>
+		</div>
+		<br /> <br />
+		<h4>Important Dates to Remember </h4> <br />
+		<div class="row" id="results"><div>
+		</div>
+		</div>
+	</div>
+	
+	<!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; We Infinitech 2018</p>
+		<p class="m-1 text-left text-white"><b>Note:</b> Every effort has been made to present you with the most accurate, up-to-date information, but because the nature of scientific and business research is constantly evolving, we cannot be held responsible for the accuracy of our content.</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+	</body>
+	
+	<script id="holidays_template" type="text/x-handlebars-template">
+	   {{#each holidays}}
+			 <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+			  <div class="card">
+				<div class="card-body">
+				  <h4 class="card-title">
+						{{holiday}}
+				  </h4>
+				  <p><i>on {{date}}-{{month}}-{{year}}</i></p>
+				  <p>Ticket Booking Date <br />
+					<i>{{hMinusDays date mon year}}</i>
+				  </p>
+				  <p class="card-text"><i>Applicable States </i>- {{states}}</p>
+				  
+				  <div title="Add to Calendar" class="addeventatc">
+					Add Reminder
+					<span class="start">{{hRemainder date mon year '7:00 AM'}}</span>
+					<span class="end">{{hRemainder date mon year '8:00 AM'}}</span>
+					<span class="timezone">Asia/Calcutta</span>
+					<span class="title">IRCTC Ticket Book for {{holiday}}</span>
+					<span class="description">IRCT Ticket Booking Remainder for my Journey by weinfinitech.com</span>
+					<span class="location">Online</span>
+				</div>
+				</div>
+			  </div>
+			</div>
+		{{/each}}
+	</script>
+</html>
