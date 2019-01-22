@@ -6,7 +6,7 @@
 		<meta property="og:image" content="img/cyclone.png" />
 		<meta property="og:description" content="IRCTC Train Ticket Advance Booking Calculator" />
 		<meta property="og:type" content="website" />
-		<link rel="shortcut icon" type="image/png" href="img/cyclone.png">
+		<link rel="shortcut icon" type="image/png" href="images/icon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta content='IRCTC Ticket Date Calculator | 120 days advance' property='og:title'/>
 		<meta name="author" content="We Infinite Tech">
@@ -52,12 +52,12 @@
 		
 		.addeventatc {visibility:hidden;}
 	</style>
-
-		
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 	<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 	<script src="js/holidaydata.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 		<script>
 			var no_of_days = 120;
 			$(document).ready(function(){
@@ -70,6 +70,10 @@
 				$("input[name=journey_date]").val(today_opened.toISOString().substr(0, 10));
 				$(".start").html(formatDateCalendar(today_opened,"7:00 AM"));
 				$(".end").html(formatDateCalendar(today_opened,"8:00 AM"));
+				
+				$( "#festival_name" ).autocomplete({
+				  source: festivalTags
+				});
 				
 				setInterval(function() {
 					var current = new Date();
@@ -153,7 +157,7 @@
 		<h4>Important Dates to Remember </h4> 
 		<i>Future and today ticket booking festival list only shown below</i>
 		<div class="search">
-			<input type="text" name="festival_name" placeholder="Enter Festival Name"/>
+			<input type="text" id="festival_name" name="festival_name" placeholder="Enter Festival Name"/>
 			<input type="button" value="Search" id="festival_search"/>
 		</div>
 		<div class="row" id="results">
@@ -193,7 +197,7 @@
 				  <h4 class="card-title">
 						{{holiday}}
 				  </h4>
-				  <p><i>on {{date}}-{{month}}-{{year}}</i></p>
+				  <p><i>on {{hFormatDate date mon year}}</i></p>
 				  <p>Ticket Booking Date <br />
 					<i>{{hMinusDays date mon year}}</i>
 				  </p>

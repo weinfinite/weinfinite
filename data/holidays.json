@@ -781,7 +781,7 @@
 			"mon": "9",
 			"year": "2019",
 			"day": "Mon",
-			"holiday": "Ganesh Chaturthi",
+			"holiday": "Ganesh / Vinayagar Chaturthi",
 			"states": "AP, DD, DN, GA, GJ, KA,MH, OR, PY, TG & TN"
 		}, {
 			"date": "3",
@@ -845,7 +845,7 @@
 			"mon": "9",
 			"year": "2019",
 			"day": "Wed",
-			"holiday": "Thiruvonam",
+			"holiday": "Thiruvonam / onam",
 			"states": "KL"
 		}, {
 			"date": "12",
@@ -941,7 +941,7 @@
 			"mon": "10",
 			"year": "2019",
 			"day": "Tue",
-			"holiday": "Vijaya Dashami",
+			"holiday": "Vijaya Dashami / Saraswati pooja",
 			"states": "National except MN & PY"
 		}, {
 			"date": "13",
