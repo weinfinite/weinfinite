@@ -17,10 +17,10 @@ Handlebars.registerHelper('ifIsPastDate', function (day,month,year,holiday,optio
 	now.setHours(0,0,0,0);	
 	var result = 0;
 	if(value){
-		result = holiday.search(new RegExp(value, "i"));
+		result = holiday.toLowerCase().indexOf(value.toLowerCase());
 		hdate = now;
 	}	
-	return (hdate < now || result != 0) ? options.inverse(this) : options.fn(this);
+	return (hdate < now || result == -1) ? options.inverse(this) : options.fn(this);
 });
 
 Handlebars.registerHelper('hMinusDays', function (day,month,year) {
