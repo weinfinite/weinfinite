@@ -7,6 +7,7 @@
 		<meta property="og:description" content="IRCTC Train Ticket Advance Booking Calculator" />
 		<meta property="og:type" content="website" />
 		<link rel="shortcut icon" type="image/png" href="images/icon.png" />
+		<link rel="manifest" href="/manifest.json">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta content='IRCTC Ticket Date Calculator | 120 days advance' property='og:title'/>
 		<meta name="author" content="We Infinite Tech">
@@ -219,5 +220,16 @@
 			</div>
 			{{/ifIsPastDate}}
 		{{/each}}
+	</script>
+	<script>
+	  if ('serviceWorker' in navigator) {
+		console.log("Will the service worker register?");
+		navigator.serviceWorker.register('service-worker.js')
+		  .then(function(reg){
+			console.log("Yes, it did.");
+		  }).catch(function(err) {
+			console.log("No it didn't. This happened: ", err)
+		  });
+	  }
 	</script>
 </html>

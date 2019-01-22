@@ -1,0 +1,15 @@
+{
+  "short_name": "∞ TicketDate",
+  "name": "We Inifnitech TicketDate",
+  "icons": [
+    {
+      "src":"images/icon.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#ffffff",
+  "theme_color": "#536878",
+  "display": "standalone"
+}
