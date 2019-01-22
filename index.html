@@ -137,13 +137,13 @@
 					return (monthIndex+1) +"/"+day+"/"+year+" "+time;
 				}
 				
-				$.getJSON('data/holidays.json', {}, function (data) {
-					//var data = {"holidays":[{"date":"1","month":"Jan","mon":"1","year":"2019","day":"Tue","holiday":"New Year's Day","states":"AR, ML, MN, MZ, NL, PY,RJ, SK & TN"}]};
+				//$.getJSON('data/holidays.json', {}, function (data) {
+					var data = {"holidays":[{"date":"1","month":"Jan","mon":"1","year":"2019","day":"Tue","holiday":"New Year's Day","states":"AR, ML, MN, MZ, NL, PY,RJ, SK & TN"}]};
 					var templateScript = $("#holidays_template").html();
 					var template = Handlebars.compile(templateScript);
 					var text = template(data);
 					$("#results").html(text);
-				});
+				//});
 			});
 		</script>
 	</head>
